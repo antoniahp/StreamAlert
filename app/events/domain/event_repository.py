@@ -1,5 +1,6 @@
 from abc import abstractmethod, ABC
-from typing import Optional
+from datetime import datetime
+from typing import Optional, List
 
 from events.domain.event import Event
 
@@ -11,4 +12,8 @@ class EventRepository(ABC):
 
     @abstractmethod
     def save_event(self, event: Event) -> None:
+        pass
+
+    @abstractmethod
+    def get_events_by_datetime(self, date_gte: datetime, date_lte:datetime ) -> List[Event]:
         pass
