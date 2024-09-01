@@ -25,7 +25,9 @@ class ImportEventsCommandHandler(CommandHandler):
                         provider_id=event.provider_id,
                         image=event.image,
                         date=event.date,
-                        category=event.category
+                        category=event.category,
+                        title=event.title
+
                     )
 
                     self.__event_repository.save_event(created_event)

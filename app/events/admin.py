@@ -4,8 +4,9 @@ from events.domain.event import Event
 
 class EventAdmin(admin.ModelAdmin):
     list_display = [
+        'title',
         'date',
-        'category',
+        'get_category',
     ]
 
 admin.site.register(Event, EventAdmin)
