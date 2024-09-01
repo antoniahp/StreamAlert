@@ -6,5 +6,5 @@ from app.events.domain.provider_event import ProviderEvent
 
 class EventImporter(ABC):
     @abstractmethod
-    def import_events(self)->List[ProviderEvent]:
+    def import_events(self) -> List[ProviderEvent]:
         pass
