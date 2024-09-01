@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "events",
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
+if TELEGRAM_BOT_TOKEN is None:
+    raise ValueError("You must define a TELEGRAM_BOT_TOKEN in the .env file")
+TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
+if TELEGRAM_CHAT_ID is None:
+    raise ValueError("You must define a TELEGRAM_CHAT_ID in the .env file")
