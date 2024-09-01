@@ -1,5 +1,4 @@
-from datetime import datetime, timedelta
-
+from datetime import timedelta
 from django.utils import timezone
 
 from cqrs.commands.command_handler import CommandHandler

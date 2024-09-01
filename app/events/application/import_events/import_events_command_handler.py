@@ -32,9 +32,3 @@ class ImportEventsCommandHandler(CommandHandler):
 
                 except EventCreatorException as e:
                     print(f"Event with provider_id {event.provider_id} could not be imported. Reason: {str(e)}")
-
-
-
-
-
-

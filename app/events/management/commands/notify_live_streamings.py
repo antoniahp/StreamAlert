@@ -6,7 +6,6 @@ from events.application.notify_live_streaming.notify_live_streaming_command_hand
 from events.infraestructure.db_event_repository import DbEventRepository
 from events.infraestructure.telegram_live_streaming_notifier import TelegramLiveStreamingNotifier
 
-
 class Command(BaseCommand):
     help = 'Notify live streamings'
 
