@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 from datetime import datetime
 
-@dataclass
-class ProviderEvent():
-    provider_url: str
+@dataclass(frozen=True)
+class ProviderEvent:
+    provider_id: str
     image: str
     date: datetime
     category:str

@@ -1,3 +1,3 @@
 from django.db import models
-from app.events.domain.event import Event
+from events.domain.event import Event
 

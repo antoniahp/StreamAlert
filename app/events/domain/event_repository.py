@@ -5,7 +5,7 @@ from app.events.domain.event import Event
 
 class EventRepository(ABC):
     @abstractmethod
-    def get_event_by_provider_url(self, provider_url: str) -> Event:
+    def get_event_by_provider_id(self, provider_id: str) -> Event:
         pass
 
     @abstractmethod

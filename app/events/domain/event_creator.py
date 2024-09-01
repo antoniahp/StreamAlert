@@ -1,12 +1,14 @@
 from datetime import datetime
+from uuid import UUID
 
 from app.events.domain.event import Event
 
 
 class EventCreator:
-    def create_event(self, provider_url:str, image:str, date:datetime, category: str ):
+    def create_event(self, event_id:UUID, provider_id:str, image:str, date:datetime, category: str) -> Event:
         return Event(
-            provider_url=provider_url,
+            event_id=event_id,
+            provider_id=provider_id,
             image=image,
             date=date,
             category=category
