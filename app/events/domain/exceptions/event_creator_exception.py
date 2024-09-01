@@ -1,0 +1,2 @@
+class EventCreatorException(Exception):
+    pass
