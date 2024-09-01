@@ -18,7 +18,7 @@ class ImportEventsCommandHandler(CommandHandler):
         provider_events = self.__event_importer.import_events()
         for event in provider_events:
             event_from_repository = self.__event_repository.get_event_by_provider_id(provider_id=event.provider_id)
-            if event_from_repository is not None:
+            if event_from_repository is None:
                 try:
                     created_event = self.__event_creator.create_event(
                         event_id=uuid4(),
