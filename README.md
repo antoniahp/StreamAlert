@@ -15,15 +15,8 @@ Esta parte se encarga de notificar automáticamente a los usuarios 30 minutos an
 </div>
 
 ## Pendiente / a mejorar:
-1. Mejorar abstracción del EventRepository.
-  Actualmente tenemos dos funciones de filtrado. Deberíamos tener una función filter con argumentos opcionales para hacer los filtros que nos interesen.
-2. Hacer validaciones de dominio en el EventCreator.
-3. Actualmente si nuestra BBDD tiene guardado un provider_id, no hacemos nada. 
-  Deberíamos hacer un update por si ha cambiado la fecha/hora del live o algún otro dato.
-4. Añadir tests unitarios y de integración.
-5. Manejar el timezone en las notificaciones.
-6. Actualmente las notificaciones se mandan cuando toca, pero llevan a la confusión ya que en el mensaje te devuelve la hora en UTC-0.
-7. Hacer la integración con crontab para que se ejecuten las tareas programadas.
+1. Añadir tests unitarios y de integración.
+
 
 
 ## Resultado
