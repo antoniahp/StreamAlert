@@ -15,6 +15,6 @@ class NotifyLiveStreamingCommandHandler(CommandHandler):
    def handle(self, command: NotifyLiveStreamingCommand):
        now = timezone.now()
        max_start_date_to_notify = now + timedelta(minutes=command.delta_time_minutes)
-       next_lives = self.__event_repository.get_events_by_datetime(date_gte=now, date_lte=max_start_date_to_notify)
+       next_lives = self.__event_repository.filter_events(date__gte=now, date__lte=max_start_date_to_notify)
        for event in next_lives:
            self.__live_streaming_notifier.notify(event)

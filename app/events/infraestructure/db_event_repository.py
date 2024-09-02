@@ -3,7 +3,7 @@ from events.domain.event_repository import EventRepository
 from events.domain.event import Event
 from datetime import datetime
 from typing import List
-
+from django.db.models import Q
 class DbEventRepository(EventRepository):
     def get_event_by_provider_id(self, provider_id: str) -> Optional[Event]:
         event = Event.objects.filter(provider_id=provider_id).first()
