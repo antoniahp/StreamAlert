@@ -12,6 +12,14 @@ class DbEventRepository(EventRepository):
     def save_event(self, event: Event) -> None:
         event.save()
 
-    def get_events_by_datetime(self, date_gte: datetime, date_lte: datetime) -> List[Event]:
-        events = Event.objects.filter(date__gte=date_gte, date__lte=date_lte)
+    def filter_events(self, date__gte: Optional[datetime] = None, date__lte: Optional[datetime] = None, category: Optional[str] = None) -> List[Event]:
+        filters = Q()
+        if date__gte is not None:
+            filters = filters & Q(date__gte=date__gte)
+        if date__lte is not None:
+            filters = filters & Q(date__lte=date__lte)
+        if category is not None:
+            filters = filters & Q(category=category)
+
+        events = Event.objects.filter(filters)
         return events

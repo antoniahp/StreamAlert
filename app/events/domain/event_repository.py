@@ -15,5 +15,6 @@ class EventRepository(ABC):
         pass
 
     @abstractmethod
-    def get_events_by_datetime(self, date_gte: datetime, date_lte:datetime ) -> List[Event]:
+    def filter_events(self, date__gte: Optional[datetime] = None, date__lte: Optional[datetime] = None, category: Optional[str] = None) -> List[Event]:
         pass
+

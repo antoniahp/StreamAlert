@@ -19,18 +19,22 @@ class ImportEventsCommandHandler(CommandHandler):
         for event in provider_events:
             event_from_repository = self.__event_repository.get_event_by_provider_id(provider_id=event.provider_id)
             if event_from_repository is None:
-                try:
-                    created_event = self.__event_creator.create_event(
-                        event_id=uuid4(),
-                        provider_id=event.provider_id,
-                        image=event.image,
-                        date=event.date,
-                        category=event.category,
-                        title=event.title
+                created_event = self.__event_creator.create_event(
+                    event_id=uuid4(),
+                    provider_id=event.provider_id,
+                    image=event.image,
+                    date=event.date,
+                    category=event.category,
+                    title=event.title
+                )
+                self.__event_repository.save_event(created_event)
+            else:
+                event_from_repository.image = event.image
+                event_from_repository.date = event.date
+                event_from_repository.category = event.category
+                event_from_repository.title = event.title
 
-                    )
+                self.__event_repository.save_event(event_from_repository)
 
-                    self.__event_repository.save_event(created_event)
 
-                except EventCreatorException as e:
-                    print(f"Event with provider_id {event.provider_id} could not be imported. Reason: {str(e)}")
+
