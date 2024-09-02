@@ -22,6 +22,33 @@ Esta parte se encarga de notificar automáticamente a los usuarios 30 minutos an
 ## Resultado
 https://github.com/user-attachments/assets/c0baebc9-4fc0-4c6e-930c-9e4f83560d75
 
+# Como arrancar y usar la aplicación
+- Para arrancar la aplicación:
+  1. Hacer un git clone de: git@github.com:antoniahp/StreamAlert.git
+  2. Copiar los ficheros env.dev-sample y el env.dev.db-sample y cambiar los datos que hay entre <> por los reales.
+  3. Hacer un docker-compose build
+  4. Docker-compose up
 
+- Para crear la sala de telegram:
+  1. Con BotFather de telegram creamos un bot. Este nos devolverá un token.
+  2. Creamos un grupo de telegram y añadimos nuestro bot.
+  3. En las variables de entorno añadimos el TELEGRAM_CHAT_ID y el TELEGRAM_BOT_TOKEN.
+
+- Enviar los mensajes programados con https://crontab.guru/
+ 1. Para Mac ->
+    - sudo vim /etc/crontab
+    - "e" para editar
+    - "i" para insertar
+    - añadimos url para ejecutarlo 30 min antes de cada evento.
+    - */30 * * * * <ruta del docker>  -f <path completo del fichero del docker-compose.yml> exec -T web python manage.py <nombre del comando>
+    - Ej: */30 * * * * /usr/local/bin/docker-compose  -f /Users/antoniahp/Desktop/StreamAlert/docker-compose.yml exec -T web python manage.py notify_live_streamings
+    - para salir y guardar escape :wq
+
+   
+  2. Para Linux ->
+      - entramos en crontab con el comando -> contrab -e 
+      - */30 * * * * /usr/local/bin/docker-compose -f <path completo del fichero del docker-compose.yml> exec -T web python manage.py <nombre del comando>
+      - para salir y guardar escape :wq
+    
 
 
