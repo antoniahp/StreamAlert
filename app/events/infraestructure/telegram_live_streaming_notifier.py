@@ -10,7 +10,7 @@ class TelegramLiveStreamingNotifier(LiveStreamingNotifier):
 
     def notify(self, event: Event) -> None:
         live_streaming_url = f"https://geek.live/live/{event.provider_id}"
-        caption = f"A las {event.date.strftime('%H:%M')} se realizará un evento de {event.get_category()}. [Ver directo]({live_streaming_url})"
+        caption = f"A las *{event.date.strftime('%H:%M')}* se realizará el evento de'{event.title}'\n *Categoría:* {event.get_category()} \n [Ver directo]({live_streaming_url})"
         self.__bot.send_photo(
             chat_id=self.__chat_id,
             photo=event.image,
