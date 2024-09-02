@@ -7,3 +7,4 @@ class ProviderEvent:
     image: str
     date: datetime
     category:str
+    title: str

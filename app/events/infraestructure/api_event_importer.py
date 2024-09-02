@@ -20,6 +20,7 @@ class ApiEventImporter(EventImporter):
                 image=event["cover"],
                 date=datetime.fromisoformat(event["start_datetime"]),
                 category=event["category"],
+                title=event["title"]
             )
             provider_events.append(provider_event)
 
